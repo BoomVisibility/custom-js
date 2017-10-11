@@ -73,6 +73,34 @@ $( ".service-image-6" ).hover(function() {
 	});
 });
 
+//Screen height function from piifs.com
+if($('html').hasClass('webworkers')) {
+    var vh = $(window).height();
+    $('#maindiv').css('height',vh + 'px');
+  }
+  
+function alturaMaxima() {
+var altura = $(window).height();
+$(" .back").css('min-height', altura);
+$("body .homediv").css('height', altura);
+$("body #maindiv").css('height', altura);
+if (altura >= 768) {
+        $("body #maindiv").css('height', altura-20 + 'px');
+    }
+$("body .block").css('height', altura-100 + 'px');
+if (altura >= 768) {
+        $("body .block").css('height', altura-200 + 'px');
+    }
+}
+alturaMaxima();
+// $(window).bind('resize', alturaMaxima);
+
+$(window).on('load resize', function() {
+if (Modernizr.mq('(min-width: 600px)')) {
+$(window).bind('resize', alturaMaxima);
+}
+});
+
 //video play functions
 jQuery(function($) {
 //jQuery video element
