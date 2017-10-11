@@ -1,27 +1,21 @@
 jQuery(function($) {
+//Standard BX Slider
 $(document).ready(function(){
 	$('.bxslider').bxSlider({
 	  controls: false,
-      pager: true,
+      	  pager: true,
 	  auto: true,
 	  pause: 7000,
 	  oneToOneTouch:true,
 	  adaptiveHeight: false
   });
   
-	$('.quoteslider').bxSlider({
-	  controls: false,
-      pager: true,
-	  auto: true,
-	  pause: 7000,
-	  oneToOneTouch:true,
-	  adaptiveHeight: false
-  });
-  
+
+//Logo Slider used on CDL
   	$('.logoslider').bxSlider({
 	  controls: false,
-      pager: false,
-      minSlides: 4,
+      	  pager: false,
+          minSlides: 4,
   	  maxSlides: 4,
   	  slideWidth: 150,
   	  slideMargin: 0,
@@ -32,6 +26,7 @@ $(document).ready(function(){
 	  adaptiveHeight: false
   });
 
+//Slide Toggle function as used on services blocks on CDL Homepage
 $( ".service-image-1" ).hover(function() {
   $( ".service-header-1 .hidden" ).slideToggle("slow");
 });
@@ -51,7 +46,7 @@ $( ".service-image-6" ).hover(function() {
   $( ".service-header-6 .hidden" ).slideToggle("slow");
 });  
 
-
+//Standard: add rel=0 to the end of all YouTube videos
     $('iframe[src*="youtube.com"]').each(function () {
         var sVideoURL = $(this).attr('src');
         if (sVideoURL.indexOf('rel=0') == -1) {
@@ -59,6 +54,7 @@ $( ".service-image-6" ).hover(function() {
         }
     });
     
+// Standard: add class "pdf" to all href's to pdf files
     $('a[href$=".pdf"]').each(function() {
         $(this).prop('target', '_blank');
         });
@@ -66,7 +62,8 @@ $( ".service-image-6" ).hover(function() {
         $(this).addClass('pdf');
     });
     
-    $('#menu-primary-menu').slicknav({
+	//Slicknav   
+	$('#menu-primary-menu').slicknav({
 			label: 'MENU',
 			duration: 300,
 			allowParentLinks: true,
@@ -76,6 +73,7 @@ $( ".service-image-6" ).hover(function() {
 	});
 });
 
+//video play functions
 jQuery(function($) {
 //jQuery video element
 var video = $('#video1');
@@ -97,8 +95,8 @@ if (!is_firefox){
 }
 });
 
+//Scrollbutton feature
 jQuery(function($) {
-
 $('#scrollbutton').click(function(){
     $('html, body').animate({scrollTop:0}, 'slow');
 });
