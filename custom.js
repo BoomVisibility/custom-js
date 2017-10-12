@@ -46,6 +46,11 @@ $( ".service-image-6" ).hover(function() {
   $( ".service-header-6 .hidden" ).slideToggle("slow");
 });  
 
+//Form Button from Milanese
+$( "#formbtn" ).click(function() {
+  $( ".hidden" ).slideToggle("slow");
+});
+
 //Standard: add rel=0 to the end of all YouTube videos
     $('iframe[src*="youtube.com"]').each(function () {
         var sVideoURL = $(this).attr('src');
