@@ -60,22 +60,34 @@ $( "#formbtn" ).click(function() {
     });
     
 // Standard: add class "pdf" to all href's to pdf files
-    $('a[href$=".pdf"]').each(function() {
-        $(this).prop('target', '_blank');
-        });
+    	$('a[href$=".pdf"]').each(function() {
+        	$(this).prop('target', '_blank');
+        	});
         $('.entry-content a[href$=".pdf"]').each(function() {
         $(this).addClass('pdf');
     });
     
-	//Slicknav   
+//Slicknav   
 	$('#menu-primary-menu').slicknav({
-			label: 'MENU',
-			duration: 300,
-			allowParentLinks: true,
-			closedSymbol: '&#43;',
-            openedSymbol: '&#8722;',
-			prependTo:'#site-navigation'
+		label: 'MENU',
+		duration: 300,
+		allowParentLinks: true,
+		closedSymbol: '&#43;',
+            	openedSymbol: '&#8722;',
+		prependTo:'#site-navigation'
 	});
+
+//Toggle title with hidden content *from FAQ page on Office Shredding
+	$(".toggle_content").hide();
+	$(".toggle_title").click(function()
+		{$(this).toggleClass("toggle_active").next().slideToggle("fast");return false
+	});	
+	
+//Animated search icon *from Strainsert
+	$("#utility-icon").click(function(){
+    	$("#search-form form").animate({'width': 'toggle'});
+	});
+	
 });
 
 //Screen height function from piifs.com
@@ -242,4 +254,16 @@ var instance = $( selector ).imageLightbox(
 
 
 });
+
+//Altura Maxima adapted for removing elements below 767px *From Office Shredding
+jQuery(function($) {
+function alturaMaxima() {
+var altura = $(window).width();
+if (altura <= 767) {
+  $("span.collapse").html("");
+  }
+}
+alturaMaxima();
+});
+
 
