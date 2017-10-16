@@ -87,6 +87,74 @@ $( "#formbtn" ).click(function() {
 	$("#utility-icon").click(function(){
     	$("#search-form form").animate({'width': 'toggle'});
 	});
+
+//Play button *from Total Scope
+$(".overlay").click(function() {
+    var video = $("#video").get(0);
+
+    if ( video.paused ) {
+        video.play();
+        $(".overlay").removeClass("moz-hide");
+        $(".overlay").removeClass("show");
+        $(".overlay").addClass("hidden");
+        $(".play").hide();
+        $(".pause").show();
+    } else {
+        video.pause();
+        $(".overlay").removeClass("hidden");
+        $(".overlay").addClass("show");
+        $(".play").show();
+        $(".pause").hide();
+    }
+
+    return false;
+});
+	
+//for hiding and toggling portions of a table *from Total Scope
+	var acc = document.getElementsByClassName("table-row");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+    		acc[i].onclick = function(){
+        		/* Toggle between adding and removing the "active" class,
+        		to highlight the button that controls the panel */
+        	this.classList.toggle("hidden");
+    }
+}
+    
+    
+    $('.table-row').each(function() {
+		if($(this).height() > 155 ) {
+		$(this).addClass('hidden');
+		$(this).append( '<div class="overlay"><a class="read-more-table"></a></div>' );
+		}
+	});
+	
+//Back to top button *from Total Scope
+	jQuery(window).scroll(function() {
+	var offset = 550;
+ 	if (jQuery(this).scrollTop() > offset) {
+ 		jQuery('.back-to-top').fadeIn(300);
+ 	} else {
+ 		jQuery('.back-to-top').fadeOut(300);
+	} 
+});
+ 
+ 	jQuery('.back-to-top').click(function(event) {
+ 		event.preventDefault();
+ 	jQuery('html, body').animate({scrollTop: 0}, "slow");
+ 	return false; })	
+});
+
+//Change an image thumbnail to main image *from Wide Plank (no longer used)
+$(document).ready(function(){
+$( ".thumbnail-product" ).click(function() {
+   $("#product-image").change(function(){
+     $("img.attachment-product-thumb").attr("src",$(this).val());
+     $("img.attachment-product-thumb").attr("srcset",$(this).val());
+     $('.featured-caption').html($('option:selected').html().replace('text','replace'));
+   });
+   });
 	
 });
 
