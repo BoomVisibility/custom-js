@@ -167,6 +167,45 @@ $('#page').each(function() {
         $('#main').removeClass('menu-background');
         });
     });
+	
+/* Ramsey's megamenu photo change :
+
+functions.php code:
+ADD IMAGE SIZE
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'menu-image', 240, 180, true ); //(cropped)
+}
+
+PULL IN FEATURED IMAGES TO MENU ITEMS
+add_filter('wp_nav_menu_objects', 'ad_filter_menu', 10, 2);
+
+function ad_filter_menu($sorted_menu_objects, $args) {
+    if ($args->theme_location != 'primary')
+        return $sorted_menu_objects;
+
+    // edit the menu objects
+    foreach ($sorted_menu_objects as $menu_object) {
+        // searching for menu items linking to posts or pages
+        // can add as many post types to the array
+        if ( in_array($menu_object->object, array('post', 'page', 'any_post_type')) ) {
+            // set the title to the post_thumbnail if available
+            // thumbnail size is the second parameter of get_the_post_thumbnail()
+            $menu_object->xfn = has_post_thumbnail($menu_object->object_id) ? get_the_post_thumbnail_url($menu_object->object_id, 'menu-image') : $menu_object->xfn;
+        }
+    }
+
+    return $sorted_menu_objects;
+}
+
+And js, where the image in the megamenu has the class "services-image"
+*/
+	
+$( ".mega-sub-menu" ).each(function(){
+    $("a.mega-menu-link").hover(function() {
+        var title = $(this).attr("rel");
+        $('.services-image').attr("src", title);
+      });
+   });
 
 //Screen height function from piifs.com
 if($('html').hasClass('webworkers')) {
