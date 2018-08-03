@@ -158,6 +158,16 @@ $( ".thumbnail-product" ).click(function() {
 	
 });
 
+//Mega menu shading from Luongo and Ramsey's
+$('#page').each(function() {
+    $('.mega-menu-item-has-children').mouseenter(function() {
+      $('#main').addClass('menu-background');
+      });
+    $('.mega-menu-item-has-children').mouseleave(function() {
+        $('#main').removeClass('menu-background');
+        });
+    });
+
 //Screen height function from piifs.com
 if($('html').hasClass('webworkers')) {
     var vh = $(window).height();
