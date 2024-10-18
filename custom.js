@@ -26,6 +26,15 @@ $(document).ready(function(){
 	  adaptiveHeight: false
   });
 
+//Add "null" options to GF dropdowns (from Swayd Epoxy). The values must be empty on these in order to work.
+$('.ginput_container_select').find('option:not(.gf_placeholder)').each(function(){
+        if($(this).val() == '') {
+            var label = $(this).text();
+            $(this).wrap('<optgroup class="blur" label="' + label + '"></optgroup>');
+            $('optgroup.blur').html('');
+        }
+    });
+
 //Slide Toggle function as used on services blocks on CDL Homepage
 $( ".service-image-1" ).hover(function() {
   $( ".service-header-1 .hidden" ).slideToggle("slow");
